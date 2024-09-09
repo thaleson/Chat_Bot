@@ -2,6 +2,7 @@ import streamlit as st
 from chatbot import NvidiaChatbot
 from dotenv import load_dotenv
 import os
+import time  # Import necessário para simular o tempo de carregamento
 
 # Carrega variáveis do arquivo .env
 load_dotenv()
@@ -17,11 +18,6 @@ def main():
 
     # Configuração da página
     st.set_page_config(page_title="Chatbot", page_icon="🤖", layout="wide")
-    
-
-
-
-
 
     st.title('🤖 Chatbot com Streamlit')
     st.write('Digite sua mensagem abaixo e veja a resposta do chatbot.')
@@ -35,16 +31,18 @@ def main():
     # Botão para enviar a mensagem
     if st.button('Enviar'):
         if mensagem_usuario:
-            resposta = chatbot.responder(mensagem_usuario)
-            # Exibição da resposta com estilização
-            st.markdown(f"""
-                <div style="background-color:#e0f7fa; border-radius:8px; padding:12px; margin-top:10px;">
-                    <strong style="color:#00796b;">Você:</strong> <span style="color:#004d40;">{mensagem_usuario}</span>
-                </div>
-                <div style="background-color:#bbdefb; border-radius:8px; padding:12px; margin-top:10px;">
-                    <strong style="color:#0d47a1;">Chatbot:</strong> <span style="color:#0d47a1;">{resposta}</span>
-                </div>
-            """, unsafe_allow_html=True)
+            with st.spinner('Processando...'):
+                time.sleep(2)  # Simular um pequeno atraso para o carregamento
+                resposta = chatbot.responder(mensagem_usuario)
+                # Exibição da resposta com estilização
+                st.markdown(f"""
+                    <div style="background-color:#e0f7fa; border-radius:8px; padding:12px; margin-top:10px;">
+                        <strong style="color:#00796b;">Você:</strong> <span style="color:#004d40;">{mensagem_usuario}</span>
+                    </div>
+                    <div style="background-color:#bbdefb; border-radius:8px; padding:12px; margin-top:10px;">
+                        <strong style="color:#0d47a1;">Chatbot:</strong> <span style="color:#0d47a1;">{resposta}</span>
+                    </div>
+                """, unsafe_allow_html=True)
         else:
             st.warning('Por favor, digite uma mensagem.')
 
