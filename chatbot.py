@@ -58,5 +58,5 @@ class NvidiaChatbot(ChatbotInterface):
             print(f"Erro na Requisição: {req_err}")
             return "Desculpe, ocorreu um erro ao processar a sua solicitação."
 
-# Exemplo de uso:
+
 
