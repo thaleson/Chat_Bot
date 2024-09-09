@@ -19,8 +19,8 @@ def main():
     # Configuração da página
     st.set_page_config(page_title="Chatbot", page_icon="🤖", layout="wide")
 
-    st.title('🤖 Chatbot com Streamlit')
-    st.write('Digite sua mensagem abaixo e veja a resposta do chatbot.')
+    st.title('🤖 Bem vindo ao MariTalk  Streamlit')
+    st.write('Digite sua mensagem abaixo e veja a resposta da MariTalk .')
     
     # Aplicar estilos de CSS à página
     with open("static/styles.css") as f:
