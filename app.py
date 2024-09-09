@@ -21,6 +21,7 @@ def main():
 
     st.title('🤖 Chatbot com Streamlit')
     st.write('Digite sua mensagem abaixo e veja a resposta do chatbot.')
+    
     # Aplicar estilos de CSS à página
     with open("static/styles.css") as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -31,8 +32,8 @@ def main():
     # Botão para enviar a mensagem
     if st.button('Enviar'):
         if mensagem_usuario:
-            with st.spinner('Processando...'):
-                time.sleep(2)  # Simular um pequeno atraso para o carregamento
+            # Exibir indicador de carregamento
+            with st.spinner('Processando a resposta...'):
                 resposta = chatbot.responder(mensagem_usuario)
                 # Exibição da resposta com estilização
                 st.markdown(f"""
